@@ -1,0 +1,140 @@
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0bddc0a0f7.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Player</title>
+    <style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+body, html {
+    background: rgb(97,145,255);
+    background: linear-gradient(164deg, rgba(97,145,255,1) 0%, rgba(2,167,225,1) 100%);
+    font-family: 'Roboto', sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+.player {
+    padding: 50px 38px;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    margin: 5px auto 5px auto;
+    background: rgb(0,16,52);
+    background: linear-gradient(164deg, rgba(0,16,52,0.748) 0%, rgba(27,36,75,0.84) 100%);
+    border-radius: 20px;
+}
+.player .imgBox {
+    margin-top: 13vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 190px;
+}
+.player .imgBox img {
+    height: 100%;
+    border-radius: 10%;
+    margin: 0 auto 0 auto;
+}
+.control {
+    margin-top: 70px;
+    color: white;
+    font-size: 30px;
+}
+.control:not(.showPlay) #playBtn {
+    display: none;
+}
+.control.showPlay #pauseBtn {
+    display: none;
+}
+
+
+.info {
+    color: #E1E1E6;
+    padding-top: 28px;
+}
+.info p {
+    opacity: 0.68;
+    font-size: 19px;
+}
+.player h1 {
+    font-size: 27px;
+    color: #E1E1E6;
+    padding-bottom: 7px;
+}
+.control.showPlay #loaderPosition {
+    display: none;
+}
+#loaderPosition {
+    position: relative;
+    transform: translateY(-63px);
+}
+.loader {
+    border: 3px solid transparent;
+    border-radius: 50%;
+    border-top: 3px solid rgba(255, 255, 255, 0.5);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+    width: 100px;
+    height: 100px;
+    -webkit-animation: spin 4s linear infinite;
+    animation: spin 4s linear infinite;
+}  
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+} 
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+    </style>
+</head>
+<body>
+    
+<div class="player">
+    <div class="imgBox">
+        <img src="https://play-lh.googleusercontent.com/zg989QWsjn1ASD9obuYPDqWJA6mpwmuHX2SIta_J4kZ7oTV2WfGJPeEN45BlbB3vGzVN" alt="LogoMusicImage">
+    </div>
+    <div class="info">
+        <h1>Saints Radio</h1>
+        <p>The Church of Jesus Christ</p>
+    </div>
+
+    <br>
+    <center>
+        <div id="btn" class="control showPlay" onclick="togglePlay()">
+            <i id="playBtn" class="fa-solid fa-play"></i>
+            <i id="pauseBtn" class="fa-solid fa-pause"></i>
+            <div id="loaderPosition"><div class="loader"></div></div>
+        </div>
+        <audio id="audioMan" style="display: none;" controls src="https://nmcdn-lds.msvdn.net/icecastRelay/101156/GvaVK70/icecast?rnd=637109878513586401"></audio>
+    </center>
+</div>
+
+<script>
+let btn = document.getElementById('btn');
+let audioMan = document.getElementById('audioMan');
+
+function togglePlay() {
+    if(audioMan.paused) {
+        btn.classList.remove('showPlay');
+        audioMan.src = audioMan.currentSrc;
+        audioMan.play();
+    } else {
+        btn.classList.add('showPlay');
+        audioMan.pause();
+    }
+}
+
+</script>
+
+</body>
+</html>
