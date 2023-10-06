@@ -1,0 +1,16 @@
+{
+    "description": "Manage Mission Social-Media Referrals",
+    "name": "Saints Radio",
+    "short_name": "Saints Radio",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#173364",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "logo.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
